@@ -1,7 +1,9 @@
 var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	insert = require('gulp-insert'),
-	webpack = require('gulp-webpack')
+	webpack = require('gulp-webpack'),
+	fs = require('fs-extra'),
+	path = require('path')
 ;
 
 var packageName = 'react-datetime';
@@ -53,6 +55,19 @@ gulp.task("build", function( callback ) {
 
 	config = getWPConfig( 'react-datetime.min' );
 	return wp( config, true );
+});
+
+gulp.task("build:examples", function( callback ) {
+	console.log('Copying CSS resources.');
+	fs.copy(
+		path.join(__dirname, 'css'),
+		path.join(__dirname, 'examples', 'css')
+	);
+	console.log('Copying JS resources.');
+	fs.copy(
+		path.join(__dirname, 'dist'),
+		path.join(__dirname, 'examples', 'js')
+	);
 });
 
 gulp.task( 'default', ['build'] );

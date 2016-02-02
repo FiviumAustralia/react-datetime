@@ -10,6 +10,7 @@
   "main": "./DateTime.js",
   "scripts": {
     "build": "./node_modules/.bin/gulp.cmd",
+    "build:examples": "./node_modules/.bin/gulp.cmd build:examples",
     "test": "node node_modules/mocha/bin/mocha tests"
   },
   "keywords": [
@@ -28,6 +29,7 @@
     "moment": ">=2.8.1"
   },
   "devDependencies": {
+    "fs-extra": "^0.26.5",
     "gulp": "^3.9.0",
     "gulp-insert": "^0.4.0",
     "gulp-uglify": "^1.2.0",
